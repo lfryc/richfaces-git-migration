@@ -1,0 +1,48 @@
+
+#rm examples/dist
+#rm module richfaces-showcase from examples/pom.xml
+#use showcase instead of richfaces-showcase
+#cp .gitignore from trunk/. to my .gitignore
+repository and scm settings for all modules
+#.gitignore for all repositories
+xmled formatting
+
+components Rewrite 7f200055afd506b2876b988f48925b8ae5a6c15b (935/1147)./output/api/pom.xml:2: parser error : XML declaration allowed only at the start of the document
+
+
+/parent
+
+/checkstyle
+
+/faces-shade-transformers
+
+/build
+	/bom
+	/parent
+	
+	XML: move modules to separate profile
+	checkout.sh
+
+
+/cdk
+
+/core
+
+/components
+	remove dist
+	XML: remove dist
+
+/dist
+	move components dist here
+	XML: components dist
+
+/examples
+	remove dist
+	remove richfaces-showcase
+	XML: remove richfaces-showcase
+
+/showcase
+
+/irc-client
+	
+/archetypes
