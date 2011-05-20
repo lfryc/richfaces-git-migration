@@ -9,7 +9,7 @@ rf2git_setup() {
 		export FETCH=$WORKDIR/fetch
 		export CLEANUP=$WORKDIR/cleanup
 		export EXPORT=$WORKDIR/export
-		export SVN_ROOT=http://anonsvn.jboss.org/repos/richfaces
+		export SVN_ROOT=https://svn.jboss.org/repos/richfaces
 		export SVN_AUTHORS=$SCRIPTS/svn.authors
 
 		export move_subtree=". $SCRIPTS/move-subtree.sh"
@@ -27,14 +27,14 @@ rf2git_fetch() {
 	# fetch parent
 	pushd $FETCH
 		git svn clone -s $SVN_ROOT/modules/build/parent/ parent \
-			--revision=17000:HEAD --log-window-size=2500 --no-metadata --authors-file=$SVN_AUTHORS
+			--revision=17000:HEAD --log-window-size=2500 --no-metadata --authors-file=$SVN_AUTHORS || exit
 	popd
 
 
 	# fetch resources
 	pushd $FETCH
 		git svn clone -s $SVN_ROOT/modules/build/resources resources \
-			--revision=17000:HEAD --log-window-size=2500 --no-metadata --authors-file=$SVN_AUTHORS
+			--revision=17000:HEAD --log-window-size=2500 --no-metadata --authors-file=$SVN_AUTHORS || exit
 	popd
 
 
@@ -53,7 +53,7 @@ rf2git_fetch() {
 		git config svn.authorsfile $SVN_AUTHORS
 		sed -ri 's#^(\s*tags = ).*$#\1tags/{'$FETCH_TAGS'}:refs/remotes/tags/*#' .git/config
 		sed -ri 's#^(\s*branches = ).*$#\1branches/{'$FETCH_BRANCHES'}:refs/remotes/*#' .git/config
-		git svn fetch --revision=$START_REV:HEAD --log-window-size=1000 --ignore-paths=$IGNORE_PATHS
+		git svn fetch --revision=$START_REV:HEAD --log-window-size=1000 --ignore-paths=$IGNORE_PATHS || exit
 	popd
 }
 
