@@ -1,0 +1,5 @@
+bash run-all.sh <workdir> (fetch|export)
+
+	fetch	- download all needed sources from SVN to <workdir>/fetch
+	
+	export	- uses <workdir>/fetch to generate <workdir>/cleanup (interstate) and <workdir>/export (with SVN structure divided to Git repositories)
